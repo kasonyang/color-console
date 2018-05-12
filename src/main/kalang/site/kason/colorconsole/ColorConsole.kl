@@ -1,0 +1,100 @@
+import org.fusesource.jansi.AnsiConsole;
+import org.fusesource.jansi.Ansi;
+import org.fusesource.jansi.Ansi.Color;
+
+/**
+ *
+ * @author Kason Yang
+ */
+class{
+
+    private static ColorConsole instance;
+
+    private Color infoColor;
+    private Color warnColor;
+    private Color statusColor;
+
+    private Object statusText = "";
+    
+    public static void main(String[] args){
+        int delay = 100;
+        ColorConsole cc = getDefault();
+        cc.info("info message\n");
+        cc.warn("err message\n");
+        cc.status("testing info ");
+        for(int i=0;i<100;i++){
+            cc.status("Progress " + i + "%");
+            Thread.sleep(delay);
+        }
+        cc.clearStatus();
+        Thread.sleep(delay);
+    }
+
+    public static ColorConsole getDefault() {
+        if (instance == null) {
+            instance = new ColorConsole();
+            AnsiConsole.systemInstall();
+        }
+        return instance;
+    }
+
+    public void info(Object text) {
+        print(text, infoColor);
+    }
+
+    public void warn(Object text) {
+        print(text, warnColor);
+    }
+
+    public void status(Object text) {
+        this.statusText = text;
+        clearStatus();
+        showStatus();
+    }
+
+    public void clearStatus() { 
+        System.out.print(Ansi.ansi().restoreCursorPosition().eraseScreen(Ansi$Erase.FORWARD));
+    }
+
+    public void print(Object text, Color color) {
+        clearStatus();
+        System.out.print(Ansi.ansi().fg(color).a(text));
+        showStatus();
+    }
+
+    public Color getInfoColor() {
+        return infoColor;
+    }
+
+    public void setInfoColor(Color infoColor) {
+        this.infoColor = infoColor;
+    }
+
+    public Color getWarnColor() {
+        return warnColor;
+    }
+
+    public void setWarnColor(Color warnColor) {
+        this.warnColor = warnColor;
+    }
+
+    public Color getStatusColor() {
+        return statusColor;
+    }
+
+    public void setStatusColor(Color statusColor) {
+        this.statusColor = statusColor;
+    }
+
+    private void showStatus() {
+        System.out.print(Ansi.ansi().saveCursorPosition().fg(statusColor).a(statusText).fg(Color.DEFAULT).a("\n"));
+        System.out.flush();
+    }
+
+    public constructor() {
+        infoColor = Color.WHITE;
+        warnColor = Color.RED;
+        statusColor = Color.YELLOW;
+    }
+
+}
