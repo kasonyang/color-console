@@ -53,7 +53,7 @@ class{
     }
 
     public void clearStatus() { 
-        System.out.print(Ansi.ansi().restoreCursorPosition().eraseScreen(Ansi$Erase.FORWARD));
+        System.err.print(Ansi.ansi().restoreCursorPosition().eraseScreen(Ansi$Erase.FORWARD));
     }
 
     public void print(Object text, Color color) {
@@ -87,8 +87,8 @@ class{
     }
 
     private void showStatus() {
-        System.out.print(Ansi.ansi().saveCursorPosition().fg(statusColor).a(statusText).fg(Color.DEFAULT).a("\n"));
-        System.out.flush();
+        System.err.print(Ansi.ansi().saveCursorPosition().fg(statusColor).a(statusText).fg(Color.DEFAULT).a("\n"));
+        System.err.flush();
     }
 
     public constructor() {
