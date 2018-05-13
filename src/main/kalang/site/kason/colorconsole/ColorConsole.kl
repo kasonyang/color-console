@@ -30,7 +30,7 @@ class{
         Thread.sleep(delay);
     }
 
-    public static ColorConsole getDefault() {
+    public static synchronized ColorConsole getDefault() {
         if (instance == null) {
             instance = new ColorConsole();
             AnsiConsole.systemInstall();
