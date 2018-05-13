@@ -1,6 +1,7 @@
 apply plugin:'java'
 apply from:'gradle/version.gradle'
 apply from:'gradle/kalang.gradle'
+apply from:'gradle/maven-publish.gradle'
 //apply plugin:'application'
 //mainClassName='site.kason.colorconsole.ColorConsole'
 
