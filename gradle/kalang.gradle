@@ -5,7 +5,7 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    classpath 'site.kason.kalang:kalang-compiler:1.2.3'
+    classpath 'site.kason.kalang:kalang-compiler:1.2.4'
   }
 }
 
