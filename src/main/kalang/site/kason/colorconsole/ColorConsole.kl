@@ -86,7 +86,7 @@ class{
     }
 
     private void showStatus() {
-        System.err.print(Ansi.ansi().saveCursorPosition().fg(statusColor).a(statusText).fg(Ansi$Color.DEFAULT).a("\n"));
+        System.err.print(Ansi.ansi().saveCursorPosition().fg(statusColor).a(statusText).fg(Ansi$Color.DEFAULT));
         System.err.flush();
     }
 
