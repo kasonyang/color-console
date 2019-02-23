@@ -11,7 +11,7 @@ repositories {
 
 dependencies {
     compile 'org.fusesource.jansi:jansi:1.14'
-    compile 'site.kason.kalang:kalang-runtime:1.4.1'
+    compile 'site.kason.kalang:kalang-runtime:1.5.1'
     compile 'com.google.code.findbugs:jsr305:3.0.1'
     testCompile 'junit:junit:4.12'
 }

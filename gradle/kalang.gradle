@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'site.kason.kalang:kalang-compiler:1.4.1'
+        classpath 'site.kason.kalang:kalang-compiler:1.5.1'
     }
 }
 
@@ -24,7 +24,7 @@ class kalang implements Plugin<Project> {
             String cp = String.join(";",cps);
             //println("class path:" + cp);
             def args = ["--output-dir",outDir.getAbsolutePath(),"--classpath",cp,klSrc.getAbsolutePath()];
-            //println("compile args:" + args);
+            //println("compile args:" + args.join(" "));
             int result = new Kalangc().run(args as String[])
             if (result!=0){
                 throw new Exception("compile failed with exit code:${result}");
