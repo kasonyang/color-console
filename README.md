@@ -17,7 +17,7 @@ gradle:
     cc.status("testing info ");
     for(int i=0;i<100;i++){
         cc.status("Progress " + i + "%");
-        Thread.sleep(delay);
+        Thread.sleep(200);
     }
     cc.clearStatus();
 
