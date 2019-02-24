@@ -31,8 +31,8 @@ class{
 
     public static synchronized ColorConsole getDefault() {
         if (instance == null) {
-            instance = new ColorConsole();
             AnsiConsole.systemInstall();
+            instance = new ColorConsole();
         }
         return instance;
     }
@@ -52,7 +52,7 @@ class{
     }
 
     public void clearStatus() { 
-        System.err.print(Ansi.ansi().restoreCursorPosition().eraseLine(Ansi$Erase.FORWARD));
+        System.out.print(Ansi.ansi().restoreCursorPosition().eraseLine(Ansi$Erase.FORWARD));
     }
 
     public void print(Object text, Ansi$Color color) {
@@ -86,14 +86,15 @@ class{
     }
 
     private void showStatus() {
-        System.err.print(Ansi.ansi().saveCursorPosition().fg(statusColor).a(statusText).fg(Ansi$Color.DEFAULT));
-        System.err.flush();
+        System.out.print(Ansi.ansi().saveCursorPosition().fg(statusColor).a(statusText).fg(Ansi$Color.DEFAULT));
+        System.out.flush();
     }
 
-    public constructor() {
+    private constructor() {
         infoColor = Ansi$Color.WHITE;
         warnColor = Ansi$Color.RED;
         statusColor = Ansi$Color.YELLOW;
+        this.showStatus();
     }
 
 }
